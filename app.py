@@ -97,11 +97,20 @@ COVER LETTER:
 [Optimized cover letter here]
 
 ATS COMPATIBILITY ANALYSIS:
-- Estimated ATS Passing Percentage: XX%
-- Key factors influencing score:
-  [List 3 specific factors]
-- Suggested improvements:
-  [List 2-3 specific suggestions]
+```markdown
+## ATS Compatibility Analysis
+### Estimated ATS Passing Percentage: XX%
+
+#### Key factors influencing score:
+1. [First factor]
+2. [Second factor] 
+3. [Third factor]
+
+#### Suggested improvements:
+* [First suggestion]
+* [Second suggestion]
+* [Third suggestion if applicable]
+```
 
 INTERVIEW PREPARATION:
 [2-3 key talking points based on job requirements and resume]
@@ -264,8 +273,25 @@ if st.button("Optimize Resume and Cover Letter"):
                     ats_section = output.split("ATS COMPATIBILITY ANALYSIS:")[1].strip()
                     if "INTERVIEW PREPARATION:" in ats_section:
                         ats_section = ats_section.split("INTERVIEW PREPARATION:")[0].strip()
+                    
+                    # Extract the markdown content if it exists
+                    markdown_content = ""
+                    if "```markdown" in ats_section and "```" in ats_section.split("```markdown")[1]:
+                        markdown_content = ats_section.split("```markdown")[1].split("```")[0].strip()
+                    else:
+                        # Fallback if the AI doesn't format it correctly
+                        markdown_content = ats_section
                 with tab4:
-                    st.text_area("ATS Analysis", value=ats_section, height=300)
+                    # Display ATS analysis as rendered markdown instead of plain text
+                    st.markdown(markdown_content)
+                    
+                    # Still provide download option
+                    st.download_button(
+                        label="Download ATS Analysis",
+                        data=ats_section,
+                        file_name="ats_analysis.md",
+                        mime="text/markdown"
+                    )
             except:
                 st.warning("Couldn't parse sections properly. Please use the Complete Output tab.")
                 
