@@ -36,11 +36,6 @@
         --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
     }
 
-    /* Specific dark mode adjustments if needed */
-    .stRadio label {
-        /* Slightly adjust radio button background in dark mode if needed */
-    }
-
     .stTextArea textarea {
         /* Ensure text color contrasts well */
         color: var(--text-color);
