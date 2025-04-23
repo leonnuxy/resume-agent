@@ -1,0 +1,549 @@
+/* styles.css - Stylesheet for Resume Optimization Agent */
+
+/* Modern color scheme - Light Mode (Default) */
+:root {
+    --primary-color: #4F46E5; /* Modern indigo */
+    --primary-light: #818CF8;
+    --accent-color: #10B981; /* Emerald green */
+    --background-color: #F9FAFB; /* Very light gray */
+    --card-background: #FFFFFF; /* White */
+    --text-color: #1F2937; /* Dark gray */
+    --text-light: #6B7280; /* Medium gray */
+    --border-color: #E5E7EB; /* Light gray */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    
+    /* New variables for the card-based UI */
+    --card-radius: 12px;
+    --card-padding: 1.25rem;
+    --header-height: 60px;
+    --header-background: var(--card-background);
+    --nav-item-gap: 1rem;
+}
+
+/* Dark Mode Color Scheme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #6366F1; /* Brighter indigo for dark mode */
+        --primary-light: #818CF8;
+        --accent-color: #10B981;
+        --background-color: #0D1117; /* Even darker gray, similar to GitHub */
+        --card-background: #161B22; /* Slightly lighter card background for contrast */
+        --text-color: #E6EDF3; /* Adjust text color for new background */
+        --text-light: #8B949E; /* Adjust light text color */
+        --border-color: #21262D; /* Adjust border color */
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Specific dark mode adjustments if needed */
+    .stRadio label {
+        /* Slightly adjust radio button background in dark mode if needed */
+    }
+
+    .stTextArea textarea {
+        /* Ensure text color contrasts well */
+        color: var(--text-color);
+    }
+    
+    /* Adjust file uploader border in dark mode */
+    .stFileUploader {
+        border-color: var(--border-color);
+    }
+    
+    .stFileUploader:hover {
+        border-color: var(--primary-light);
+    }
+}
+
+/* Apply modern styling to the entire app */
+.reportview-container {
+    background-color: var(--background-color);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-color);
+}
+
+.stApp {
+    background-color: var(--background-color);
+}
+
+/* General styling improvements */
+.main-title {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.subtitle {
+    margin-bottom: 2rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Modern card-like containers */
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Create a modern card look for sections */
+.stExpander, div[data-testid="stForm"] {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s ease;
+}
+
+.stExpander:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.stElementContainer element-container st-emotion-cache-kj6hex eu6p4el1 {
+    display: none !important;
+}
+
+/* Modern button styling */
+.stButton > button {
+    width: 20%;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    float: right;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(79, 70, 229, 0.15);
+    background-color: var(--primary-light);
+}
+
+/* Make text areas more readable and modern */
+.stTextArea textarea {
+    font-size: 1rem;
+    line-height: 1.6;
+    border-radius: 8px; /* Slightly larger radius */
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stTextArea textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+    outline: none;
+}
+
+/* Make radio buttons more user-friendly and modern */
+.stRadio > div {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.stRadio label {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.stRadio label:hover {
+    border-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+/* Style for the selected radio button */
+.stRadio input:checked + div > label {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Style the tabs for better usability and modern look */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 5px; /* Increased gap */
+    border-bottom: 2px solid var(--border-color); /* Underline for the tab bar */
+    border-radius: 0; /* Remove radius from tab list */
+}
+
+.stTabs [data-baseweb="tab"] {
+    height: 45px;
+    white-space: pre-wrap;
+    border-radius: 0; /* Remove radius from individual tabs */
+    gap: 1px;
+    padding: 0.5rem 1rem;
+    border: none; /* Remove individual tab borders */
+    border-bottom: 2px solid transparent; /* Prepare for active state underline */
+    color: var(--text-light);
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    color: var(--primary-color);
+}
+
+.stTabs [data-baseweb="tab"][aria-selected="true"] {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color); /* Underline for active tab */
+    font-weight: 600;
+}
+
+
+
+/* Modernize success/info/error messages */
+.stAlert {
+    border-radius: 8px;
+    border: none;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+.stAlert[data-baseweb="alert"][data-testid="stAlert"] > div:first-child {
+    padding-right: 1rem; /* Add space for icon */
+}
+
+/* Success */
+.stAlert[data-baseweb="alert"][data-testid="stAlert"][kind="success"] {
+    background-color: #ECFDF5; /* Light green */
+    color: #065F46; /* Dark green */
+}
+
+/* Info */
+.stAlert[data-baseweb="alert"][data-testid="stAlert"][kind="info"] {
+    background-color: #EFF6FF; /* Light blue */
+    color: #1E40AF; /* Dark blue */
+}
+
+/* Error */
+.stAlert[data-baseweb="alert"][data-testid="stAlert"][kind="error"] {
+    background-color: #FEF2F2; /* Light red */
+    color: #991B1B; /* Dark red */
+}
+
+/* Warning */
+.stAlert[data-baseweb="alert"][data-testid="stAlert"][kind="warning"] {
+    background-color: #FFFBEB; /* Light yellow */
+    color: #92400E; /* Dark yellow */
+}
+
+/* Modernize the sidebar */
+div[data-testid="stSidebarNav"] {
+    padding-top: 1rem;
+}
+
+div[data-testid="stSidebar"] > div:first-child {
+    background-color: var(--card-background);
+    border-right: 1px solid var(--border-color);
+    padding: 1.5rem;
+}
+
+.stSidebar .stButton > button {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    text-transform: none;
+    font-weight: 500;
+}
+
+.stSidebar .stButton > button:hover {
+    background-color: rgba(79, 70, 229, 0.05);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Modernize file uploader */
+.stFileUploader {
+    background-color: var(--card-background);
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 1.0rem;
+    text-align: center;
+    transition: border-color 0.2s ease;
+}
+
+.stFileUploader:hover {
+    border-color: var(--primary-light);
+}
+
+.stFileUploader label {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Make expanders more noticeable */
+.streamlit-expanderHeader {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* Container for the optimize button */
+.optimize-button-container {
+    display: flex;
+    justify-content: flex-end; /* Align button to the right */
+    margin-top: 1.5rem;
+}
+
+/* Specific styling for the optimize button */
+.optimize-button-container .stButton > button {
+    width: auto; /* Allow button to size based on content */
+    padding: 0.5rem 1.25rem; /* Smaller padding */
+    font-size: 0.85rem; /* Slightly smaller font */
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    /* Reduce whitespace for mobile */
+    .block-container {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    /* Make text areas more mobile friendly */
+    .stTextArea textarea {
+        font-size: 0.9rem;
+    }
+    
+    /* Responsive headers */
+    h1 {
+        font-size: calc(1.3rem + 1vw);
+    }
+    
+    h2, h3 {
+        font-size: calc(1rem + 0.5vw);
+    }
+    
+    /* Responsive tabs */
+    .stTabs [data-baseweb="tab-list"] {
+        flex-wrap: wrap;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        height: 40px;
+        padding: 5px 10px;
+    }
+    
+    /* Improve touch targets */
+    .stRadio [data-testid="stRadio"] label {
+        padding: 10px 5px;
+    }
+    
+    /* Prevent horizontal scrolling */
+    .stMarkdown {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+    
+    /* Better expanders for mobile */
+    .streamlit-expanderHeader {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small screens/phones optimization */
+@media (max-width: 480px) {
+    /* Even more compact for very small screens */
+    .block-container {
+        padding: 0.5rem;
+    }
+
+    .st-emotion-cache-wn8ljn {
+        margin-right: 0px !important;
+    }
+
+    .section-heading {
+        font-size: 1.2rem !important;
+    }
+
+    .header-logo {
+        padding-top: 40px;
+        font-size: 1.2rem;
+    }
+
+    .nav-item {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+
+    .stRadio > div {
+        gap: 1px;
+    }
+    .st-emotion-cache-9ycgxx {
+        font-size: 0.85rem;
+
+    }
+
+    .st-emotion-cache-c8ta4l {
+        font-size: 0.75rem;
+    }
+
+    .st-emotion-cache-b0y9n5 {
+        font-size: 0.75rem;
+    }
+
+    .stButton > button {
+        width: 100%;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+
+    /* Stack buttons on very small screens */
+    .row-widget.stButton {
+        margin-bottom: 10px;
+    }
+    
+    /* Smaller font for inputs */
+    .stTextArea textarea {
+        font-size: 0.85rem;
+    }
+    
+    /* Smaller tabs */
+    .stTabs [data-baseweb="tab"] {
+        font-size: 0.8rem;
+        height: 35px;
+        padding: 3px 8px;
+    }
+}
+
+/* Header and navigation styling */
+.header-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    height: var(--header-height);
+}
+
+
+.nav-item {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-light);
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    color: var(--primary-color);
+}
+
+.nav-item.active {
+    color: var(--primary-color);
+    background-color: rgba(79, 70, 229, 0.1);
+}
+
+/* Card-based layout */
+.section-heading {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.input-card {
+    background-color: var(--card-background);
+    border-radius: var(--card-radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.input-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+/* Results styling */
+.results-card {
+    background-color: var(--card-background);
+    padding: var(--card-padding);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.ats-analysis {
+    padding: 1.5rem;
+}
+
+.download-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+/* Action Button styling */
+.action-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.action-button-container .stButton > button {
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    width: auto;
+}
+
+.action-button-container .stButton > button:hover:not([disabled]) {
+    transform: translateY(-2px);
+    background-color: #0EA271; /* Darker accent color for hover */
+    box-shadow: 0 6px 12px rgba(16, 185, 129, 0.15);
+}
+
+.action-button-container .stButton > button:disabled {
+    background-color: #E5E7EB;
+    color: #9CA3AF;
+    cursor: not-allowed;
+}
+
+/* Mobile navigation - hamburger menu for small screens */
+@media (max-width: 768px) {
+
+    /* We'll use a simplified approach for demo purposes */
+    .nav-item {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Styling for the sidebar when hidden - must be at the end to override default Streamlit styles */
+.stSidebar {
+    display: none !important; /* Ensure the sidebar is completely hidden */
+}
+
+.st-emotion-cache-1f3w014 {
+    display: none;
+}
